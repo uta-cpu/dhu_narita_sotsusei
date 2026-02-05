@@ -16,17 +16,17 @@ export default function Home() {
   // ▼ イントロ画面
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-[#faf9f3] flex flex-col items-center justify-center overflow-hidden relative">
+      <div className="min-h-screen bg-[#c3e0df] flex flex-col items-center justify-center overflow-hidden relative">
         
         {/* ★ここに看板（表札）を追加！ */}
-        {/* ドアの上に配置されるようにマージンや位置を調整 */}
-        <div className="z-20 mb-[-20px] animate-fade-in-down relative">
-          <div className="bg-[#4a617a] px-8 py-3 border-4 border-white shadow-lg rounded-[4px] relative">
-             <span className="text-xl text-white font-black block leading-tight tracking-widest text-center">
+        {/* スマホでも見やすいようにサイズと間隔を調整 */}
+        <div className="z-20 mb-4 md:mb-8 animate-fade-in-down relative">
+          <div className="bg-[#4a617a] px-6 py-2 md:px-8 md:py-3 border-4 border-white shadow-lg rounded-[4px] relative">
+             <span className="text-base md:text-xl text-white font-black block leading-tight tracking-widest text-center">
                GLOBAL<br/>LEADERSHIP<br/>ZEMI
              </span>
              {/* 看板を吊るす金具 */}
-             <div className="absolute -top-[12px] left-1/2 -translate-x-1/2 w-[2px] h-[12px] bg-[#8da0b6]" />
+             <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-[2px] h-[10px] md:h-[12px] bg-[#8da0b6]" />
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export default function Home() {
 
   // ▼ ロッカー一覧画面
   return (
-    <div className="min-h-screen bg-[#faf9f3] flex flex-col items-center py-10 font-sans select-none overflow-x-hidden">
+    <div className="min-h-screen bg-[#c3e0df] flex flex-col items-center py-10 font-sans select-none overflow-x-hidden">
       
       {/* 案内メッセージ */}
       <motion.div 
