@@ -5,15 +5,23 @@ import { useEffect, useState } from "react";
 
 /**
  * 展示詳細ページ
- * - スマホ対応版: 画面サイズに応じてレイアウトを自動調整し、必要ならスクロール可能に
- * - データ: 1〜15番まで完備
+ * - データ: ユーザー指定の15作品
+ * - 修正: Next.js 15対応のため、URLから直接IDを取得するロジックに変更
  */
-export default function ShoeDetailPage(props: any) {
-  const params = props.params || {};
-  const id = params.id || "1";
-  
+export default function ShoeDetailPage() {
+  // 初期値は "1"
+  const [id, setId] = useState("1");
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    // マウント時にURLからIDを取得する (例: /shoes/5 -> "5")
+    if (typeof window !== "undefined") {
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const currentId = pathSegments[pathSegments.length - 1]; // 最後の部分を取得
+      if (currentId) {
+        setId(currentId);
+      }
+    }
     setMounted(true);
   }, []);
 
@@ -98,7 +106,7 @@ export default function ShoeDetailPage(props: any) {
     },
 
     "8": {
-      title: "若者のメンタルヘルスに関する考察ーうつ・適応障害と再発防止の可能性ー",
+      title: "若者のメンタルヘルスに関する考察",
       author: "平中孝汰",
       note: "#CLASSROOM_3B",
       description: "本論文は、若者に多い「うつ病の再発」に着目し、その予防策を個人・周囲・社会の三つの視点から考察したものである。\n統計データや先行研究に加え、筆者自身の経験や身近な事例をもとに、再発しやすい要因と現実的な対策を整理した。\n\n特に、環境調整やセルフマネジメントの有効性だけでなく、金銭的・制度的制約によってそれらが実行しにくい若者の実情にも焦点を当てている。\n\n本研究を通して、再発防止は個人の努力だけに依存するものではなく、周囲の理解と社会的支援が連動することで初めて持続可能になることを示した。",
